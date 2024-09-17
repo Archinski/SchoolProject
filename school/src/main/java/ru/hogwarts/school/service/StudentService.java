@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class StudentService {
+public class StudentService{
     private final Map<Long, Student> students = new HashMap<>();
     private long idcounter = 1;
 
