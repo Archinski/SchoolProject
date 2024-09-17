@@ -37,7 +37,7 @@ public class StudentController {
     }
 
     @GetMapping("/filterByAge")
-    public List<Student> getStudentByAge(int age){
+    public List<Student> getStudentByAge(int age) {
         return studentService.getAllStudents().stream()
                 .filter(student -> student.getAge() == age)
                 .collect(Collectors.toList());

@@ -17,7 +17,6 @@ public class FacultyController {
         this.facultyService = facultyService;
     }
 
-
     @PostMapping
     public Faculty createFaculty(@RequestParam String name, @RequestParam String color) {
         return facultyService.createFaculty(name, color);
