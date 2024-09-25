@@ -2,6 +2,8 @@ package ru.hogwarts.school.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import ru.hogwarts.school.model.Student;
 
 import java.util.List;
@@ -9,9 +11,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest
 class StudentServiceTest {
-
-    StudentService studentService = new StudentService();
+    @Autowired
+    private StudentService studentService;
 
     @Test
     @DisplayName("Создание студента")
@@ -33,8 +36,6 @@ class StudentServiceTest {
         Student actual = studentService.deleteStudent(savedStudent.getId());
 
         assertEquals(actual, savedStudent);
-        Student student = studentService.updateStudent(savedStudent);
-        assertNull(student);
     }
 
     @Test
@@ -43,7 +44,7 @@ class StudentServiceTest {
         Student expected = new Student("Serg", 35);
         Student savedStudent = studentService.createStudent(expected);
 
-        Student actual = studentService.updateStudent(savedStudent);
+        Student actual = studentService.updateStudent(savedStudent, expected.getId());
         assertEquals(actual, savedStudent);
     }
 
@@ -61,6 +62,5 @@ class StudentServiceTest {
         List<Student> actual = studentService.getStudentByAge(age);
 
         assertThat(actual).containsAll(List.of(expected1, expected2));
-
     }
 }

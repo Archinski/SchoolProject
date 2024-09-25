@@ -7,7 +7,6 @@ import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.service.FacultyService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -35,8 +34,8 @@ public class FacultyController {
 
 
     @PutMapping("/{id}/update")
-    public ResponseEntity<Faculty> updateFaculty(@RequestBody Faculty faculty) {
-        Faculty foundFaculty = facultyService.updateFaculty(faculty);
+    public ResponseEntity<Faculty> updateFaculty(@RequestBody Faculty faculty, @RequestBody Long id) {
+        Faculty foundFaculty = facultyService.updateFaculty(faculty, id);
         if (foundFaculty == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

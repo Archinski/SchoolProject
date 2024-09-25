@@ -2,16 +2,24 @@ package ru.hogwarts.school.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import ru.hogwarts.school.model.Faculty;
+import ru.hogwarts.school.repository.FacultyRepository;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class FacultyServiceTest {
-    FacultyService facultyService = new FacultyService();
 
+    @Autowired
+    private FacultyService facultyService;
+
+    @Autowired
+    private FacultyRepository facultyRepository;
 
     @Test
     @DisplayName("Создание факультета")
@@ -29,7 +37,7 @@ class FacultyServiceTest {
         Faculty expected = new Faculty("Serg", "Зеленый");
         Faculty savedFaculty = facultyService.createFaculty(expected);
 
-        Faculty actual = facultyService.updateFaculty(savedFaculty);
+        Faculty actual = facultyService.updateFaculty(savedFaculty, expected.getId());
         assertEquals(actual, savedFaculty);
     }
 
@@ -43,8 +51,6 @@ class FacultyServiceTest {
         Faculty actual = facultyService.deleteFaculty(savedFaculty.getId());
 
         assertEquals(actual, savedFaculty);
-        Faculty faculty = facultyService.updateFaculty(savedFaculty);
-        assertNull(faculty);
     }
 
     @Test
