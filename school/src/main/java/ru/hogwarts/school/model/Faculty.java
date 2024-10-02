@@ -13,15 +13,15 @@ public class Faculty {
     private String name;
     private String color;
 
+    @OneToMany
+    private List<Student> students;
+
     public Faculty() {
     }
 
     public List<Student> getStudents() {
         return students;
     }
-
-    @OneToMany
-    private List<Student> students;
 
     public Faculty(String name, String color) {
         this.name = name;

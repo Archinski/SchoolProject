@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -17,7 +17,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="38ec7919-ad45-4500-b58f-2eecb6cf9cb4">
-      <console name="Connection" type="STANDARD" schema="public" session="Main" />
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -30,7 +30,7 @@
     <connection id="38ec7919-ad45-4500-b58f-2eecb6cf9cb4" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/school/src/main/java/scripts.sql" connection-id="virtual-postgres-connection" session-id="" current-schema="" />
+    <mapping file-url="file://$PROJECT_DIR$/school/src/main/java/scripts.sql" connection-id="virtual-postgres-connection" session-id="MAIN" current-schema="" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
