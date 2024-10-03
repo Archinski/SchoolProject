@@ -1,14 +1,11 @@
 package ru.hogwarts.school.controller;
 
 import jakarta.annotation.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.w3c.dom.stylesheets.MediaList;
-import ru.hogwarts.school.model.Avatar;
 import ru.hogwarts.school.service.AvatarService;
 
 import java.io.FileNotFoundException;
@@ -25,29 +22,19 @@ public class AvatarController {
     }
 
     @PostMapping(value = "/{studentId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> uploadAvatar(@PathVariable("studentId") Long studentId,
-                                               @RequestParam("file") MultipartFile avatar) throws IOException {
+    public ResponseEntity<String> uploadAvatar(@PathVariable Long studentId, @RequestParam MultipartFile avatar) throws IOException {
         avatarService.uploadAvatar(studentId, avatar);
-        return ResponseEntity.ok("Аватар успешно загружен");
+        return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/from-db/{studentId}")
-    public ResponseEntity<byte[]> getAvatarFromDb(@PathVariable Long studentId) {
-        byte[] imageData = avatarService.getAvatarDataFromDb(studentId);
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(imageData);
+    @GetMapping(value = "/{id}/avatar-from-db")
+    public ResponseEntity<byte[]> downloadAvatarFromDb(@PathVariable Long id) {
+        return avatarService.prepareAvatarResponseFromDb(id);
     }
 
-    // Эндпоинт для получения аватара с диска
-    @GetMapping("/from-file/{studentId}")
-    public ResponseEntity<Resource> getAvatarFromFile(@PathVariable Long studentId) throws MalformedURLException, FileNotFoundException {
-        Resource resource = (Resource) avatarService.getAvatarFromFile(studentId);
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(resource);
+    @GetMapping(value = "/{id}/avatar-from-file")
+    public void downloadAvatarFromFile(@PathVariable Long id, HttpServletResponse response) throws IOException {
+        avatarService.prepareAvatarResponseFromFile(id, response);
     }
 }
 

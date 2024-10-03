@@ -1,7 +1,7 @@
 package ru.hogwarts.school.exception;
 
 public class AvatarByStudentIdNotFoundException extends RuntimeException{
-    public AvatarByStudentIdNotFoundException() {
+    public AvatarByStudentIdNotFoundException(Long id) {
         super("ID студента не найден");
     }
 }
