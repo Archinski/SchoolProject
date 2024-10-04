@@ -13,7 +13,7 @@ public class Faculty {
     private String name;
     private String color;
 
-    @OneToMany
+    @OneToMany()
     private List<Student> students;
 
     public Faculty() {
