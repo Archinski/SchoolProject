@@ -18,6 +18,10 @@ public class Student {
     public Student() {
     }
 
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     public Faculty getFaculty() {
         return faculty;
     }

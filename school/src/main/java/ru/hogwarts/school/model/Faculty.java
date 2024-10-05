@@ -16,6 +16,10 @@ public class Faculty {
     @OneToMany()
     private List<Student> students;
 
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
     public Faculty() {
     }
 
