@@ -8,4 +8,9 @@ select * from student where name like '%o%'
 select * from student where age < id
 5. Получить всех студентов упорядоченных по возрасту.
 select * from student order by age
-
+6. Получить количество всех студентов в школе.
+SELECT COUNT(DISTINCT(name)) FROM student
+7. Получить средний возраст студентов.
+SELECT AVG(age) FROM student
+8. Получать только пять последних студентов. Последние студенты считаются теми, у кого идентификатор больше других.
+SELECT * FROM student ORDER BY id DESC LIMIT 5

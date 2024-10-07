@@ -61,4 +61,16 @@ public class StudentService {
     public Faculty findByStudentId(long id) {
         return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException(id)).getFaculty();
     }
+
+    public Integer getAllStudent() {
+        return studentRepository.findByAllStudentName();
+    }
+
+    public Integer findAvgStudents() {
+        return studentRepository.findAvgStudents();
+    }
+
+    public List<Student> findFiveLastStudents() {
+        return studentRepository.findFiveLastStudents();
+    }
 }
