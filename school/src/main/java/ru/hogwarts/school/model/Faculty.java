@@ -19,10 +19,6 @@ public class Faculty {
     public Faculty() {
     }
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
     public Faculty(String name, String color) {
         this.name = name;
         this.color = color;
