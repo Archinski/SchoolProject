@@ -5,4 +5,4 @@ ALTER TABLE student ALTER COLUMN name SET NOT NULL, ADD CONSTRAINT unique_name U
 3. Пара “значение названия” - “цвет факультета” должна быть уникальной.
 ALTER TABLE faculty ADD CONSTRAINT name_color_unique UNIQUE (name,color);
 4. При создании студента без возраста ему автоматически должно присваиваться 20 лет.
-ALTER TABLE student ALTER COLUMN age SET DEFAULT 20
+ALTER TABLE student ALTER COLUMN age SET DEFAULT 20;
