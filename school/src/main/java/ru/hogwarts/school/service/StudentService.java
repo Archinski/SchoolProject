@@ -92,4 +92,20 @@ public class StudentService {
         logger.info("Находим пять последних студентов");
         return studentRepository.findFiveLastStudents();
     }
+
+    public List<String> getNameStartWithA() {
+        return studentRepository.findAll().stream()
+                .map(Student::getName)
+                .filter(name -> name.startsWith("A") || name.startsWith("a"))
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public double getAverageAgeStudents() {
+        return studentRepository.findAll().stream()
+                .mapToInt(Student::getAge)
+                .average()
+                .orElse(0.0);
+    }
 }

@@ -68,5 +68,11 @@ public class FacultyController {
     public Faculty findByStudentId(@PathVariable long id) {
         return studentService.findByStudentId(id);
     }
+
+    @GetMapping("/long-name-faculty")
+    public String getLongNameFaculty() {
+        return facultyService.getLongNameFaculty();
+    }
 }
+
 
