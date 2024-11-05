@@ -108,4 +108,54 @@ public class StudentService {
                 .average()
                 .orElse(0.0);
     }
+
+    public List<Student> findAll() {
+        return studentRepository.findAll();
+    }
+
+    public void getPrintParallel() {
+        List<Student> students = findAll();
+
+        if (students.size() < 6) {
+            System.out.println("Неверное количество студентов");
+        }
+
+        System.out.println(students.get(0).getName());
+        System.out.println(students.get(1).getName());
+
+        new Thread(() -> {
+            System.out.println(students.get(2).getName());
+            System.out.println(students.get(3).getName());
+        }).start();
+
+        new Thread(() -> {
+            System.out.println(students.get(4).getName());
+            System.out.println(students.get(5).getName());
+        }).start();
+    }
+
+    public synchronized void printName(String name) {
+        System.out.println(name);
+    }
+
+    public void getPrintSynchronized() {
+        List<Student> students = findAll();
+
+        if (students.size() < 6) {
+            System.out.println("Неверное количество студентов");
+        }
+
+        printName(students.get(0).getName());
+        printName(students.get(1).getName());
+
+        new Thread(() -> {
+            printName(students.get(2).getName());
+            printName(students.get(3).getName());
+        }).start();
+
+        new Thread(() -> {
+            printName(students.get(4).getName());
+            printName(students.get(5).getName());
+        }).start();
+    }
 }
