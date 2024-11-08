@@ -88,7 +88,7 @@ public class StudentController {
         return studentService.getAverageAgeStudents();
     }
 
-    @GetMapping("//students/print-parallel")
+    @GetMapping("/students/print-parallel")
     public void getPrintParallel() {
         studentService.getPrintParallel();
     }
